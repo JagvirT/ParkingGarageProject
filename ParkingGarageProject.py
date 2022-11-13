@@ -3,22 +3,60 @@ class Parking_Garage():
         self.name = name
         self.pay_for_parking = pay_for_parking
         self.current_ticket = {}
-        self.ticket_ammount = 50
+        self.ticket_amount = 50
         self.parking_spaces = 50
         
+#     - takeTicket
+#    - This should decrease the amount of tickets available by 1
+#    - This should decrease the amount of parkingSpaces available by 1
+    
+    def take_ticket(self): 
+        self.ticket_amount -= 1
+        self.parking_spaces -= 1
+        pass
 
+#  - Display an input that waits for an amount from the user and store it in a variable
+#    - If the payment variable is not empty then (meaning the ticket has been paid) ->  display a message to the user that their ticket has been paid and they have 15mins to leave
+#    - This should update the "currentTicket" dictionary key "paid" to True
+    
     def for_parking(self):
-        name = input('Do you wish to purchase a parking ticket?: (true or false)')
-        amount = input('Please pay $5 for 15 minutes of parking: ')
-        print('Thank you for paying! Please proceed to parking spot for 15 minutes.')
-        self.current_ticket[amount] = name
+        user_ticket_number = input('What is your ticket number?')
+        amount = input('Please pay $20 for parking: (true or false)').lower()
+        if amount == 'true':
+            print('Thank you for paying! You have 15 minutes to exit the parking garage.')
+            self.current_ticket[user_ticket_number] = amount
+        else:
+            print('Try again. please pay parking in order to exit')
         print(self.current_ticket)
         pass
 
-    def take_ticket(): 
-        pass
+#     -leaveGarage
+#    - If the ticket has been paid, display a message of "Thank You, have a nice day"
+#    - If the ticket has not been paid, display an input prompt for payment
+#       - Once paid, display message "Thank you, have a nice day!"
+#    - Update parkingSpaces list to increase by 1 (meaning add to the parkingSpaces list)
+#    - Update tickets list to increase by 1 (meaning add to the tickets list)
+    
+    def leave_garage(self):
+        user_ticket_number = input('What is your ticket number?')
+        for key, value in self.current_ticket.items():
+            if key == user_ticket_number and value == 'true':
+                print ('Thank You, have a nice day')
+                self.parking_spaces += 1
+                self.ticket_amount += 1
+            else:
+                amount = input('Please pay $20 for parking: (true or false)').lower()
 
-    def leave_garage():
+        
+        
+        
+        # for value in self.current_ticket.value():
+        #     if value == 'true':
+        #         print('Thank You, have a nice day')
+        #     elif value == 'false':
+
+
+
         pass
 
 
@@ -26,6 +64,8 @@ class Parking_Garage():
     
 car = Parking_Garage('Kevon', ' ' )
 car.for_parking()
+car.leave_garage()
+
 
 
 
