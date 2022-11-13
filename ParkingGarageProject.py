@@ -56,6 +56,8 @@ class Parking_Garage():
             if key == user_ticket_number and value == 'true':
                 print ('Thank You, have a nice day')
                 #del self.current_ticket[user_ticket_number] 
+                self.available_ticket.append(user_ticket_number)
+                self.available_ticket.sort()
                 self.parking_spaces += 1
                 self.ticket_amount += 1
                 break
@@ -64,6 +66,8 @@ class Parking_Garage():
                 user_input = input('Please pay $20 for parking: (yes/no)' ).lower()
                 if user_input == 'yes':
                     self.current_ticket[user_ticket_number]= 'true'
+                    self.available_ticket.append(user_ticket_number)
+                    self.available_ticket.sort()
                     self.parking_spaces += 1
                     self.ticket_amount += 1
                     print ('Thank You, have a nice day')
