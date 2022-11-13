@@ -86,12 +86,12 @@ class Parking_Garage():
 
     def runner(self):
         while True:
-            user_choice = input()
-            if user_choice == "":
+            user_choice = input("add, pay, or show?" ).lower()
+            if user_choice == "add":
                 self.for_parking()
-            elif user_choice == "":
+            elif user_choice == "pay":
                 self.leave_garage()
-            elif user_choice == "":
+            elif user_choice == "show":
                 self.show_garage_space()
                 print('thank you for parking')
                 break
@@ -101,11 +101,11 @@ class Parking_Garage():
 
     
 car = Parking_Garage('South Beach')
-car.take_ticket()
+#car.take_ticket()
 #car.for_parking()
 #car.leave_garage()
-car.show_garage_space()
-#car.runner()
+#car.show_garage_space()
+car.runner()
 
 
 
