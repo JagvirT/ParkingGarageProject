@@ -5,14 +5,7 @@ class Parking_Garage():
         self.current_ticket = {}
         self.ticket_amount = 10
         self.parking_spaces = 10
-#     - takeTicket
-#    - This should decrease the amount of tickets available by 1
-#    - This should decrease the amount of parkingSpaces available by 1
     
-
-#  - Display an input that waits for an amount from the user and store it in a variable
-#    - If the payment variable is not empty then (meaning the ticket has been paid) ->  display a message to the user that their ticket has been paid and they have 15mins to leave
-#    - This should update the "currentTicket" dictionary key "paid" to True
     
     def for_parking(self):
         self.ticket_amount -= 1
@@ -29,33 +22,14 @@ class Parking_Garage():
         else:
             print('Try again. please pay parking in order to exit')
             pass
-        # else:
-        #     print('Unknown ticket number input, please enter a valid ticket number:')
-        # amount = input('Please pay $20 for parking: (true or false)').lower()
-        # if amount == 'true':
-        #     print('Thank you for paying! You have 15 minutes to exit the parking garage.')
-        #     self.current_ticket[user_ticket_number] = amount
-        # elif amount == 'false':
-        #     self.current_ticket[user_ticket_number] = amount
-        # else:
-        #     print('Try again. please pay parking in order to exit')
-        #     pass
         print(self.current_ticket)
-            
-
-#     -leaveGarage
-#    - If the ticket has been paid, display a message of "Thank You, have a nice day"
-#    - If the ticket has not been paid, display an input prompt for payment
-#       - Once paid, display message "Thank you, have a nice day!"
-#    - Update parkingSpaces list to increase by 1 (meaning add to the parkingSpaces list)
-#    - Update tickets list to increase by 1 (meaning add to the tickets list)
+    
     
     def leave_garage(self):
         user_ticket_number = input('What is your ticket number?')
         for key, value in self.current_ticket.items():
             if key == user_ticket_number and value == 'true':
                 print ('Thank You, have a nice day')
-                #del self.current_ticket[user_ticket_number] 
                 self.available_ticket.append(user_ticket_number)
                 self.available_ticket.sort()
                 self.parking_spaces += 1
@@ -77,22 +51,9 @@ class Parking_Garage():
                     self.parking_spaces += 1
                     self.ticket_amount += 1
                     break
-            
-
-   
-
-        
-        
-        
-        # for value in self.current_ticket.value():
-        #     if value == 'true':
-        #         print('Thank You, have a nice day')
-        #     elif value == 'false':
-
-
-
         pass
 
+   
     def show_garage_space(self):
         if self.available_ticket == {}:
             print("Parking Garage Full")
@@ -112,7 +73,6 @@ class Parking_Garage():
             elif user_choice == "available spots":
                 self.show_garage_space()
                 print('thank you for parking')
-                
             else:
                 print("Invalid Option")
 
@@ -124,6 +84,13 @@ car = Parking_Garage('South Beach')
 # car.leave_garage()
 # car.show_garage_space()
 car.runner()
+
+# List of Group Responsiblities:
+# Making the class (def __init__): Jayred (lines 1- 7)
+# def for_parking part: Jag (lines 10 - 25)
+# def leave_garage: Jag (lines 28 - 40) and Kevon (lines 41 - 54)
+# def show_garage_space: Jay (lines 57-61) and Kevon (lines 62-63)
+# def runner(while loop): Kevon (lines 66-77)
 
 
 
