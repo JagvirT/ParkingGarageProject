@@ -8,11 +8,11 @@ class Parking_Garage():
     
     
     def for_parking(self):
-        self.ticket_amount -= 1
-        self.parking_spaces -= 1
         print(self.available_ticket)
         user_ticket_number = input('What is your ticket number? ')
         amount = input('Do you want to pay now or later? (Now/Later)').lower()
+        self.ticket_amount -= 1
+        self.parking_spaces -= 1
         if user_ticket_number in self.available_ticket and amount == 'now':
             self.available_ticket.remove(user_ticket_number)
             self.current_ticket[user_ticket_number] = "true"
@@ -29,8 +29,9 @@ class Parking_Garage():
         user_ticket_number = input('What is your ticket number?')
         for key, value in self.current_ticket.items():
             if key == user_ticket_number and value == 'true':
-                print ('Thank You, have a nice day')
+                print ('Thank you, have a nice day!')
                 self.available_ticket.append(user_ticket_number)
+                del self.current_ticket[user_ticket_number]
                 self.available_ticket.sort()
                 self.parking_spaces += 1
                 self.ticket_amount += 1
@@ -42,14 +43,13 @@ class Parking_Garage():
                     self.current_ticket[user_ticket_number]= 'true'
                     self.available_ticket.append(user_ticket_number)
                     self.available_ticket.sort()
+                    del self.current_ticket[user_ticket_number]
                     self.parking_spaces += 1
                     self.ticket_amount += 1
                     print ('Thank You, have a nice day')
                     break
                 else:
-                    print('Please see management ticket need to be paid in person now')
-                    self.parking_spaces += 1
-                    self.ticket_amount += 1
+                    print('Please pay ticket!')
                     break
         pass
 
@@ -57,7 +57,7 @@ class Parking_Garage():
     def show_garage_space(self):
         if self.available_ticket == {}:
             print("Parking Garage Full")
-        print(f'---------- Current Space in {self.name} Parking Garage')
+        print(f'---------- Current Space in {self.name} Parking Garage----------')
         print(f'Parking Space = {self.parking_spaces}')
         print(f'Ticket Amount = {self.ticket_amount}')
         print(f'Space Available{self.available_ticket}')
@@ -72,7 +72,7 @@ class Parking_Garage():
                 self.leave_garage()
             elif user_choice == "available spots":
                 self.show_garage_space()
-                print('thank you for parking')
+                print('Thank you for parking with us!')
             else:
                 print("Invalid Option")
 
